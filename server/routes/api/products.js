@@ -4,7 +4,8 @@ const Products = ProductDTO.getModel();
 
 const router = express.Router();
 
-//GET products
+//GET products ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPxuP6C/4EI10o1+TJctv8jimXVqVxKS2Rznm7K4eRv9 surhon.juraholov@gmail.com
+
 router.get('/', async (req, res) => {
     let products = await Products.find({})
     let results = products.map( product => {
@@ -12,11 +13,11 @@ router.get('/', async (req, res) => {
             id: product._id,
             name: product.name,
             description: product.description,
-            price: product.price,
+            price: product.price.toString(),
             quantity: product.quantity
         }
     });
-    res.send(results);
+    res.json(results);
 });
 
 //Add Products
